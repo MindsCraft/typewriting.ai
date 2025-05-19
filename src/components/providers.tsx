@@ -1,16 +1,11 @@
 "use client";
 
-import { ThemeProvider } from "@/components/theme-context";
-import { ReactNode } from "react";
+import React from 'react';
 
-interface ProvidersProps {
-  children: ReactNode;
-}
-
-export function Providers({ children }: ProvidersProps) {
+export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider>
+    <>
       {children}
-    </ThemeProvider>
+    </>
   );
 }

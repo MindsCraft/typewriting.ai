@@ -18,17 +18,86 @@
   --blue-800: 30 64 175;
   --blue-900: 30 58 138;
   --blue-950: 23 37 84;
-}
 
-body {
-  color: rgb(var(--foreground));
-  background: white;
-  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-}
+  /* TPR color palette (Notion-inspired) */
+  --tpr-black: 37 37 37;
+  --tpr-white: 255 255 255;
+  --tpr-gray-light: 247 247 247;
+  --tpr-gray: 235 235 235;
+  --tpr-gray-dark: 212 212 212;
+  --tpr-brown: 233 229 227;
+  --tpr-orange: 250 235 221;
+  --tpr-yellow: 251 243 219;
+  --tpr-green: 237 243 236;
+  --tpr-blue: 231 243 248;
+  --tpr-purple: 244 240 247;
+  --tpr-pink: 249 238 243;
+  --tpr-red: 253 235 236;
 
-.text-balance {
+  /* TPR text colors */
+  --tpr-text-default: 55 53 47;
+  --tpr-text-gray: 120 119 116;
+  --tpr-text-brown: 159 107 83;
+  --tpr-text-orange: 217 115 13;
+  --tpr-text-yellow: 203 145 47;
+  --tpr-text-green: 68 131 97;
+  --tpr-text-blue: 51 126 169;
+  --tpr-text-purple: 144 101 176;
+  --tpr-text-pink: 193 76 138;
+  --tpr-text-red: 212 76 71;
+  }
+
+  body {
+  color: rgb(var(--tpr-text-default));
+  background: rgb(var(--tpr-white));
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  -webkit-font-smoothing: antialiased;
+  }
+
+  .text-balance {
   text-wrap: balance;
-}
+  }
+
+  /* TPR utility classes */
+  .tpr-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  }
+
+  .tpr-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  padding: 0 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  }
+
+  .tpr-btn-primary {
+  color: rgb(var(--tpr-white));
+  background-color: rgb(var(--tpr-black));
+  border: 1px solid rgb(var(--tpr-black));
+  }
+
+  .tpr-btn-primary:hover {
+  background-color: rgba(var(--tpr-black), 0.8);
+  }
+
+  .tpr-btn-secondary {
+  color: rgb(var(--tpr-text-default));
+  background-color: rgb(var(--tpr-white));
+  border: 1px solid rgba(var(--tpr-black), 0.16);
+  }
+
+  .tpr-btn-secondary:hover {
+  background-color: rgb(var(--tpr-gray-light));
+  }
+
 
 /* Animations */
 .animate-cursor {
@@ -45,7 +114,7 @@ body {
 }
 
 @keyframes type {
-  0% { width: 0ch; }
+  0% { width: 0; }
   5%, 10% { width: 1ch; }
   15%, 20% { width: 2ch; }
   25%, 30% { width: 3ch; }
