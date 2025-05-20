@@ -57,10 +57,10 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
       {/* Chromatic blur with frosted glass effect */}
       <div
-        className={`absolute inset-0 transition-all duration-500 ease-in-out backdrop-filter backdrop-blur-lg bg-gradient-to-r from-white/60 via-white/70 to-white/60 ${
+        className={`border-b border-gray-200/30 absolute inset-0 transition-all duration-500 ease-in-out backdrop-filter backdrop-blur-lg bg-gradient-to-r from-white/60 via-white/70 to-white/60 ${
           scrolled 
-            ? 'border-b border-gray-200/30 bg-opacity-80' 
-            : 'bg-opacity-70'
+            ? 'bg-opacity-70' 
+            : 'bg-opacity-60' 
         }`}
         style={{
           backdropFilter: 'blur(10px) saturate(180%)',
