@@ -4,35 +4,35 @@ import React, { useState } from 'react';
 
 const FAQ = () => {
   const [openItem, setOpenItem] = useState<number | null>(0);
-  
+
   const toggleItem = (index: number) => {
     setOpenItem(openItem === index ? null : index);
   };
-  
+
   const faqItems = [
     {
-      question: "How does Typewriting.ai work?",
-      answer: "Typewriting.ai uses advanced artificial intelligence to help you create better content faster. Simply input a prompt or start writing, and our AI will suggest completions, improvements, and alternatives based on your context and goals."
+      question: "What can I do with Typewriting AI?",
+      answer: "You can create unlimited chatbots, organized by different project names. Manage separate knowledge bases and questionnaires tailored for each project easily."
     },
     {
-      question: "Is my content secure and private?",
-      answer: "Yes, your content is completely private and secure. We use enterprise-grade encryption and never store your content unless you explicitly save it. Our service is compliant with GDPR, CCPA, and other privacy regulations."
+      question: "How safe are my files and customer responses with Typewriting AI?",
+      answer: "Your data is secure. We never use your files or responses for language model training. Everything is stored safely and separately. When you delete a file from your project, it's completely removed from our system."
     },
     {
-      question: "Can I use Typewriting.ai for different types of content?",
-      answer: "Absolutely! Typewriting.ai can help you create various types of content including emails, blog posts, social media updates, marketing copy, academic papers, creative writing, and more. Our AI adapts to different writing styles and formats."
+      question: "How fast and reliable are Typewriting AI's responses?",
+      answer: "We use trusted open-source models combined with a Retrieval-Augmented Generation (RAG) layer to provide precise, accurate answers and avoid hallucinations or incorrect info—keeping your customers well-informed."
     },
     {
-      question: "Do I need to be a professional writer to use this tool?",
-      answer: "Not at all. Typewriting.ai is designed for writers of all skill levels. Whether you're a professional copywriter, a student, or a business owner who occasionally needs to create content, our tool will help you produce better writing with less effort."
+      question: "Does Typewriting AI support other languages?",
+      answer: "Yes! Typewriting AI supports multiple languages and always tries to respond in the same language as your customer."
     },
     {
-      question: "Does Typewriting.ai support languages other than English?",
-      answer: "Currently, Typewriting.ai works best with English, but we are actively developing support for other languages. Our roadmap includes Spanish, French, German, and several other major languages in the coming months."
+      question: "What is the difference between free and paid plans?",
+      answer: "The free plan includes all features but limits the number of contacts your bots can respond to—up to 30 contacts. Paid plans remove this limit for unlimited contacts."
     },
     {
-      question: "What's the difference between free and paid plans?",
-      answer: "The free plan gives you limited access to our basic features with a monthly word limit. Paid plans offer unlimited words, advanced features like style customization, priority support, and integration with other tools. Check our pricing page for detailed comparisons."
+      question: "What is your Enterprise Plan?",
+      answer: "We know enterprises have unique needs that go beyond standard packages. Our team works closely with you to tailor solutions—whether within existing features or with custom additions—to fit your business perfectly."
     }
   ];
 
@@ -55,8 +55,8 @@ const FAQ = () => {
 
         <div className="space-y-4">
           {faqItems.map((item, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className={`border ${openItem === index ? 'border-[rgb(var(--tpr-black))]' : 'border-[rgb(var(--tpr-gray))]'} rounded-lg overflow-hidden transition-colors duration-200`}
             >
               <button
@@ -65,16 +65,16 @@ const FAQ = () => {
                 aria-expanded={openItem === index}
               >
                 <span>{item.question}</span>
-                <svg 
-                  className={`w-5 h-5 transition-transform duration-200 ${openItem === index ? 'transform rotate-180' : ''}`} 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
+                <svg
+                  className={`w-5 h-5 transition-transform duration-200 ${openItem === index ? 'transform rotate-180' : ''}`}
+                  fill="none"
+                  viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              <div 
+              <div
                 className={`overflow-hidden transition-all duration-200 ${openItem === index ? 'max-h-96' : 'max-h-0'}`}
               >
                 <div className="p-5 pt-0 text-[rgb(var(--tpr-text-gray))]">
@@ -89,9 +89,8 @@ const FAQ = () => {
           <p className="mb-6 text-[rgb(var(--tpr-text-gray))]">
             Still have questions? We're here to help!
           </p>
-          <a 
-            href="#contact" 
-            onClick={(e) => { e.preventDefault(); scrollToSection('cta'); }}
+          <a
+            href="https://calendly.com/uddinmoin/typewriting"
             className="tpr-btn tpr-btn-secondary"
           >
             Contact Support

@@ -12,7 +12,8 @@ export default function Home() {
       <Hero />
       <Features />
       <Testimonials />
-      {/*<Pricing />*/}
+       {/*keeping this section hidden for now. will use this portion later. */}
+       {/*<Pricing /> */}
       <FAQ />
       <CTA />
     </div>

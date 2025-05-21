@@ -105,7 +105,7 @@ const Features = () => {
         </div>
 
         <div className="mt-20 text-center">
-          <a href="#pricing" className="tpr-btn tpr-btn-primary mx-auto inline-flex">
+          <a href="https://ask.typewriting.ai/login" className="tpr-btn tpr-btn-primary mx-auto inline-flex">
             View All Features
           </a>
         </div>

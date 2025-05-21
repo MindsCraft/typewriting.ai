@@ -105,16 +105,6 @@ export default function Header() {
 
           {/* CTA - Right - Notion-style */}
           <div className="flex items-center justify-end flex-shrink-0 z-10">
-            {/* Try free button - Notion style */}
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={() => scrollToSection('features')}
-              className="hidden md:inline-flex mr-2"
-            >
-              Try free
-            </Button>
-
             {/* Book a call button - Notion style */}
             <Button
               variant="primary"
@@ -179,14 +169,6 @@ export default function Header() {
                 </button>
               ))}
               <div className="pt-4 mt-2 space-y-3 border-t border-gray-200/50">
-                <Button
-                  variant="secondary"
-                  size="md"
-                  fullWidth={true}
-                  onClick={() => { scrollToSection('features'); setMobileMenuOpen(false); }}
-                >
-                  Try free
-                </Button>
                 <Button
                   variant="primary"
                   size="md"
