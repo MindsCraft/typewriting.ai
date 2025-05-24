@@ -41,7 +41,7 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center mb-16 md:mb-24">
           <h1 className="text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl mb-6 max-w-4xl mx-auto">
-            Not another AI chatbot maker
+            Not another AI chatbot Agent
           </h1>
           <p className="text-lg md:text-xl text-[rgb(var(--tpr-text-gray))] max-w-2xl mx-auto mb-8">
             A complete platform to make AI agents who acts like your secretary - asking questions, taking notes, getting you ready.
