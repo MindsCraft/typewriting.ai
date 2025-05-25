@@ -2,18 +2,16 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { FiArrowRight, FiCheck, FiZap, FiCode, FiGlobe, FiMessageSquare, FiCalendar } from 'react-icons/fi';
+import { FiArrowRight,FiCalendar, FiX } from 'react-icons/fi';
 
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 }
-};
 
 const ExperimentsPage = () => {
   const [activeFeature, setActiveFeature] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
     setIsMounted(true);
@@ -36,24 +34,34 @@ const ExperimentsPage = () => {
 
   const features = [
     {
-      icon: <FiMessageSquare className="w-6 h-6" />,
-      title: 'Natural Conversations',
-      description: 'Engage users with human-like conversations powered by advanced NLP.'
+      title: "Questionnaire",
+      description: "Create customized questionnaires to gather structured information from your users and clients.",
+      image: "/images/features/Questionnaire.jpg",
+      color: "from-orange-600 to-amber-500"
     },
     {
-      icon: <FiZap className="w-6 h-6" />,
-      title: 'Smart Automations',
-      description: 'Automate repetitive tasks and workflows with intelligent triggers.'
+      title: "Customisation",
+      description: "Tailor the AI experience to match your brand voice, style, and specific industry requirements.",
+      image: "/images/features/customisation.jpg",
+      color: "from-purple-600 to-indigo-500"
     },
     {
-      icon: <FiCode className="w-6 h-6" />,
-      title: 'No-Code Builder',
-      description: 'Create custom AI assistants without writing a single line of code.'
+      title: "Agent Settings",
+      description: "Configure your AI agents with different personalities, expertise levels, and response styles.",
+      image: "/images/features/agent-settings.jpg",
+      color: "from-teal-600 to-emerald-500"
     },
     {
-      icon: <FiGlobe className="w-6 h-6" />,
-      title: 'Multi-Platform',
-      description: 'Deploy your AI on websites, apps, and messaging platforms.'
+      title: "Summary",
+      description: "Generate concise summaries of lengthy content, meetings, or documents with key points highlighted.",
+      image: "/images/features/summary.jpg",
+      color: "from-blue-600 to-cyan-500"
+    },
+    {
+      title: "Direct Messaging",
+      description: "Communicate directly with your AI assistant through a chat interface with real-time responses.",
+      image: "/images/features/direct-messaging.jpg",
+      color: "from-rose-600 to-pink-500"
     }
   ];
 
@@ -121,23 +129,6 @@ const ExperimentsPage = () => {
                 <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
-            <div className="mt-12 flex items-center justify-center gap-4 transform hover:scale-105 transition-transform duration-300">
-              <a
-                href="https://www.producthunt.com/posts/typewriting-helpdesk-agent?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-typewriting&#0045;helpdesk&#0045;agent"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300"
-              >
-                <img
-                  src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=949292&theme=dark&t=1747735554674"
-                  alt="Typewriting&#0032;Helpdesk&#0032;Agent - Avoid&#0032;delays&#0032;or&#0032;ghosting—let&#0032;AI&#0032;respond&#0032;your&#0032;client | Product Hunt"
-                  style={{width: "250px", height: "54px"}}
-                  width="250"
-                  height="54"
-                  className="rounded-lg"
-                />
-              </a>
-            </div>
           </motion.div>
 
           <motion.div
@@ -148,9 +139,26 @@ const ExperimentsPage = () => {
           >
             <div className="p-1 bg-gradient-to-r from-blue-500 to-indigo-600" />
             <div className="p-6 md:p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">
-                See Our Platform <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">in Action</span>
-              </h3>
+              <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+                <h3 className="text-2xl font-bold text-gray-900 mb-3 md:mb-0 text-left">
+                  See us in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Action</span>
+                </h3>
+                <a
+                  href="https://www.producthunt.com/posts/typewriting-helpdesk-agent?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-typewriting&#0045;helpdesk&#0045;agent"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transform hover:scale-105 transition-transform duration-300 rounded-lg"
+                >
+                  <img
+                    src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=949292&theme=dark&t=1747735554674"
+                    alt="Typewriting&#0032;Helpdesk&#0032;Agent - Avoid&#0032;delays&#0032;or&#0032;ghosting—let&#0032;AI&#0032;respond&#0032;your&#0032;client | Product Hunt"
+                    style={{width: "250px", height: "54px"}}
+                    width="250"
+                    height="54"
+                    className="rounded-lg"
+                  />
+                </a>
+              </div>
               <div className="relative overflow-hidden rounded-xl border border-gray-200 group">
                 {/* Decorative elements */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-50"></div>
@@ -200,65 +208,311 @@ const ExperimentsPage = () => {
             </h2>
             <p className="text-xl text-gray-600">
               Build smart AI assistants with our easy-to-use platform.
-              Your AI will ask questions, gather information, and explain complex topics clearly—no human needed.
+              Your AI will ask questions, gather information, and explain complex topics clearly. No need human assistance.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature, index) => (
+          {/* Feature Card Modal/Lightbox */}
+          {selectedImage && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-80" onClick={() => setSelectedImage(null)}>
+              <div className="relative max-w-5xl w-full">
+                <button
+                  className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition-colors duration-200"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedImage(null);
+                  }}
+                >
+                  <FiX className="w-6 h-6 text-gray-800" />
+                </button>
+                <div className="relative w-full rounded-xl overflow-hidden shadow-2xl">
+                  <Image
+                    src={selectedImage}
+                    alt="Feature image"
+                    width={1200}
+                    height={800}
+                    className="w-full h-auto"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Feature Cards Layout */}
+          <div className="space-y-10">
+            {/* Row 1: Two cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {features.slice(0, 2).map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{
+                    delay: index * 0.1,
+                    type: 'spring',
+                    stiffness: 300,
+                    damping: 20
+                  }}
+                  className="group cursor-pointer"
+                  onClick={() => setSelectedImage(feature.image)}
+                >
+                  <div className="bg-[rgb(34,37,42)] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 p-8">
+                    <div className="relative w-full aspect-square mb-5">
+                      <div className="relative h-full w-full overflow-hidden rounded-lg">
+                        <Image
+                          src={feature.image}
+                          alt={feature.title}
+                          fill
+                          style={{ objectFit: 'cover', objectPosition: 'top left' }}
+                          className="transition-all duration-300"
+                        />
+                      </div>
+                    </div>
+                    <div className="text-white">
+                      <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                      <p className="text-white/90 leading-relaxed">{feature.description}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Row 2: One card */}
+            <div className="w-full">
               <motion.div
-                key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 whileHover={{ y: -5, scale: 1.02 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{
-                  delay: index * 0.1,
+                  delay: 0.2,
                   type: 'spring',
                   stiffness: 300,
                   damping: 20
                 }}
-                className="group"
+                className="group cursor-pointer"
+                onClick={() => setSelectedImage(features[2].image)}
               >
-                <div className="h-full bg-white p-6 rounded-xl border border-gray-100 hover:border-blue-100 hover:shadow-lg transition-all duration-300">
-                  <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-                  <div className="mt-4 flex items-center text-blue-600 font-medium group-hover:text-blue-700 transition-colors duration-300">
-                    <span>Learn more</span>
-                    <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
+                <div className="bg-[rgb(34,37,42)] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 p-8">
+                  <div className="flex flex-col md:flex-row gap-8">
+                    <div className="w-full md:w-1/2">
+                      <div className="relative aspect-square w-full">
+                        <div className="relative h-full w-full overflow-hidden rounded-lg">
+                          <Image
+                            src={features[2].image}
+                            alt={features[2].title}
+                            fill
+                            style={{ objectFit: 'cover', objectPosition: 'top left' }}
+                            className="transition-all duration-300"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="w-full md:w-1/2 flex flex-col justify-center text-white">
+                      <h3 className="text-xl font-semibold mb-3">{features[2].title}</h3>
+                      <p className="text-white/90 leading-relaxed">{features[2].description}</p>
+                    </div>
                   </div>
                 </div>
               </motion.div>
-            ))}
-          </div>
+            </div>
 
-          <div className="mt-16 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 md:p-12">
-            <div className="max-w-4xl mx-auto text-center">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to get started?</h3>
-              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                Join thousands of businesses that trust our platform to power their AI assistants.
-              </p>
-              <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Link
-                  href="/signup"
-                  className="px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-md hover:shadow-lg"
+            {/* Row 3: Two cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {features.slice(3, 5).map((feature, index) => (
+                <motion.div
+                  key={index + 3}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{
+                    delay: index * 0.1,
+                    type: 'spring',
+                    stiffness: 300,
+                    damping: 20
+                  }}
+                  className="group cursor-pointer"
+                  onClick={() => setSelectedImage(feature.image)}
                 >
-                  Start Free Trial
-                </Link>
-                <Link
-                  href="#demo"
-                  className="px-8 py-3.5 bg-white text-gray-700 font-medium rounded-lg border-2 border-gray-200 hover:bg-gray-50 transition-all duration-300"
-                >
-                  Request Demo
-                </Link>
-              </div>
+                  <div className="bg-[rgb(34,37,42)] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 p-8">
+                    <div className="relative w-full aspect-square mb-5">
+                      <div className="relative h-full w-full overflow-hidden rounded-lg">
+                        <Image
+                          src={feature.image}
+                          alt={feature.title}
+                          fill
+                          style={{ objectFit: 'cover', objectPosition: 'top left' }}
+                          className="transition-all duration-300"
+                        />
+                      </div>
+                    </div>
+                    <div className="text-white">
+                      <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                      <p className="text-white/90 leading-relaxed">{feature.description}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
+
         </div>
       </section>
+
+      {/* CTA Section */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 to-indigo-700 text-white py-24">
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
+          <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-white rounded-full filter blur-3xl"></div>
+          <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-purple-300 rounded-full filter blur-3xl"></div>
+        </div>
+
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              Ready to Transform Your Business
+              <span className="block text-blue-100 mt-2">with AI-Powered Assistant?</span>
+            </h2>
+            <p className="text-xl text-blue-100 mb-12 max-w-3xl mx-auto">
+              Join thousands of forward-thinking companies that are already enhancing their customer experience
+              and boosting efficiency with our AI assistant platform.
+            </p>
+
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+              >
+                <Link
+                  href="https://ask.typewriting.ai/login"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-700 text-lg font-semibold rounded-xl hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl"
+                >
+                  Start Free
+                  <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+              >
+                <Link
+                  href="https://calendly.com/uddinmoin/typewriting"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white/50 text-white text-lg font-semibold rounded-xl hover:bg-white/10 transition-all duration-300"
+                >
+                  Schedule a Call
+                  <FiCalendar className="ml-2" />
+                </Link>
+              </motion.div>
+            </div>
+
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-blue-100">
+              <div>
+                <p>Trusted by many businesses worldwide</p>
+                <div className="flex items-center justify-center mt-1">
+                  <span className="ml-2">15th on Product Hunt</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
+              <div className="flex items-center px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="text-blue-100 mr-2"
+                >
+                  <path
+                    d="M10 18.333a8.333 8.333 0 100-16.666 8.333 8.333 0 000 16.666z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M7.5 10l1.667 1.667L13.333 8.333"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span className="text-white text-sm font-medium">No credit card required</span>
+              </div>
+
+              <div className="flex items-center px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="text-blue-100 mr-2"
+                >
+                  <path
+                    d="M10 18.333a8.333 8.333 0 100-16.666 8.333 8.333 0 000 16.666z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M7.5 10l1.667 1.667L13.333 8.333"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span className="text-white text-sm font-medium">Always Free for Limited Assistant</span>
+              </div>
+
+              <div className="flex items-center px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="text-blue-100 mr-2"
+                >
+                  <path
+                    d="M10 18.333a8.333 8.333 0 100-16.666 8.333 8.333 0 000 16.666z"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M7.5 10l1.667 1.667L13.333 8.333"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span className="text-white text-sm font-medium">Cancel anytime</span>
+              </div>
+            </div>
+
+          </motion.div>
+        </div>
+      </section>
+
 
       {/* Demo Section */}
       <section id="demo" className="py-20 bg-gray-50">
@@ -416,83 +670,6 @@ const ExperimentsPage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 to-indigo-700 text-white py-24">
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
-          <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-white rounded-full filter blur-3xl"></div>
-          <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-purple-300 rounded-full filter blur-3xl"></div>
-        </div>
-
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Ready to Transform Your Business
-              <span className="block text-blue-100 mt-2">with AI-Powered Conversations?</span>
-            </h2>
-            <p className="text-xl text-blue-100 mb-12 max-w-3xl mx-auto">
-              Join thousands of forward-thinking companies that are already enhancing their customer experience
-              and boosting efficiency with our AI assistant platform.
-            </p>
-
-            <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <motion.div
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-              >
-                <Link
-                  href="/signup"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-700 text-lg font-semibold rounded-xl hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl"
-                >
-                  Start Your Free Trial
-                  <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-              >
-                <Link
-                  href="/demo"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white/50 text-white text-lg font-semibold rounded-xl hover:bg-white/10 transition-all duration-300"
-                >
-                  Schedule a Demo
-                  <FiCalendar className="ml-2" />
-                </Link>
-              </motion.div>
-            </div>
-
-            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-blue-100">
-              <div className="flex -space-x-2">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <div key={i} className="h-8 w-8 rounded-full border-2 border-blue-600 bg-white/20 backdrop-blur-sm" />
-                ))}
-              </div>
-              <div>
-                <p>Trusted by 10,000+ businesses worldwide</p>
-                <div className="flex items-center justify-center mt-1">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <svg key={star} className="w-4 h-4 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                  <span className="ml-2">4.9/5 from 500+ reviews</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Features Section - New Design */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -556,115 +733,9 @@ const ExperimentsPage = () => {
               </div>
             </div>
           </div>
-
-          {/* Two Feature Cards */}
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              {
-                title: "Real-time Collaboration",
-                description: "Work together with your team in real-time. See changes instantly and collaborate without any friction.",
-                icon: (
-                  <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                )
-              },
-              {
-                title: "Advanced Analytics",
-                description: "Gain valuable insights with our comprehensive analytics dashboard. Track performance and optimize your workflows.",
-                icon: (
-                  <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                  </svg>
-                )
-              }
-            ].map((feature, i) => (
-              <div key={i} className="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow duration-300">
-                <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-6">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600 mb-6">{feature.description}</p>
-                <a href="#" className="text-blue-600 font-medium hover:text-blue-700 inline-flex items-center">
-                  Learn more
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </a>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
-      {/* New Features Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Powerful features for your business
-            </h2>
-            <p className="text-xl text-gray-600">
-              Everything you need to build, launch, and grow your AI assistant
-            </p>
-          </div>
-
-          {/* Features Grid */}
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6m0 0v6m0-6h6m-6 0H6a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 00-2-2h-2a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Easy Integration</h3>
-              <p className="text-gray-600 mb-6">Seamlessly connect with your favorite tools and services in just a few clicks.</p>
-              <a href="#" className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 group">
-                Learn more
-                <svg className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"></path>
-                </svg>
-              </a>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Lightning Fast</h3>
-              <p className="text-gray-600 mb-6">Experience blazing fast performance with our optimized AI infrastructure.</p>
-              <a href="#" className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 group">
-                Learn more
-                <svg className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"></path>
-                </svg>
-              </a>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-              <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
-                <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Enterprise Security</h3>
-              <p className="text-gray-600 mb-6">Your data is protected with bank-level encryption and security protocols.</p>
-              <a href="#" className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 group">
-                Learn more
-                <svg className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

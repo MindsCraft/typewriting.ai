@@ -115,16 +115,16 @@ const Hero = () => {
             </div>
           </div>
 
-          {/*<div className="mt-24 text-center">*/}
-          {/*  <p className="text-[rgb(var(--tpr-text-gray))] mb-8">Trusted by thousands of writers and content creators</p>*/}
-          {/*  <div className="flex flex-wrap justify-center gap-8 items-center max-w-4xl mx-auto">*/}
-          {/*    {["The New Yorker", "Medium", "Forbes", "TechCrunch", "FastCompany", "Wired"].map((brand) => (*/}
-          {/*      <div key={brand} className="h-6 text-[rgb(var(--tpr-text-gray))] font-semibold">*/}
-          {/*        {brand}*/}
-          {/*      </div>*/}
-          {/*    ))}*/}
-          {/*  </div>*/}
-          {/*</div>*/}
+          <div className="mt-24 text-center">
+            <p className="text-[rgb(var(--tpr-text-gray))] mb-8">Trusted by thousands of writers and content creators</p>
+            <div className="flex flex-wrap justify-center gap-8 items-center max-w-4xl mx-auto">
+              {["The New Yorker", "Medium", "Forbes", "TechCrunch", "FastCompany", "Wired"].map((brand) => (
+                <div key={brand} className="h-6 text-[rgb(var(--tpr-text-gray))] font-semibold">
+                  {brand}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
