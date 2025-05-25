@@ -136,13 +136,15 @@ export default function Header() {
               transition={{ type: 'spring', stiffness: 400, damping: 10 }}
               className="hidden md:block"
             >
-              <button
-                onClick={() => scrollToSection('cta')}
+              <a
+                href="https://calendly.com/uddinmoin/typewriting"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-5 py-2.5 bg-[#2382fc] text-white text-sm font-medium rounded-lg hover:bg-blue-600 transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer"
               >
                 Book a Call
                 <FiCalendar className="ml-2" />
-              </button>
+              </a>
             </motion.div>
 
             {/* Mobile menu button - Enhanced */}
@@ -219,13 +221,16 @@ export default function Header() {
                     whileTap={{ scale: 0.98 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 10 }}
                   >
-                    <button
-                      onClick={() => { scrollToSection('cta'); setMobileMenuOpen(false); }}
+                    <a
+                      href="https://calendly.com/uddinmoin/typewriting"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setMobileMenuOpen(false)}
                       className="w-full inline-flex items-center justify-center px-5 py-3 bg-[#2382fc] text-white text-base font-medium rounded-lg hover:bg-blue-600 transition-all duration-300 shadow-md hover:shadow-lg"
                     >
                       Book a Call
                       <FiCalendar className="ml-2" />
-                    </button>
+                    </a>
                   </motion.div>
                   <motion.div
                     whileHover={{ scale: 1.02 }}
@@ -236,7 +241,7 @@ export default function Header() {
                       href="https://ask.typewriting.ai/login"
                       className="w-full inline-flex items-center justify-center px-5 py-3 bg-white border border-[#2382fc] text-[#2382fc] text-base font-medium rounded-lg hover:bg-blue-50 hover:border-blue-500 transition-all duration-300 shadow-sm hover:shadow-md"
                     >
-                      Start Building Free
+                      Start Free
                       <FiArrowRight className="ml-2" />
                     </a>
                   </motion.div>
