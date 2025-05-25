@@ -80,7 +80,7 @@ export default function Footer() {
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-                href="https://discord.gg/typewriting"
+                href="https://discord.gg/tqbH6Svz8k"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Discord"
@@ -104,7 +104,7 @@ export default function Footer() {
           >
             <h3 className="text-base font-medium mb-4 md:font-semibold text-gray-900">Resources</h3>
             <ul className="space-y-3">
-              {["Tutorial", "Documentation", "Demos"].map((item, index) => (
+              {["Tutorial", "Demos"].map((item, index) => (
                 <motion.li
                   key={item}
                   initial={{ opacity: 0, x: -10 }}
@@ -116,10 +116,8 @@ export default function Footer() {
                   <a
                     href={
                       item === "Tutorial"
-                        ? "https://typewriting.ai/docs/tutorial"
-                        : item === "Documentation"
-                          ? "https://typewriting.ai/docs"
-                          : "https://www.youtube.com/c/TypewritingAI"
+                        ? "https://docs.typewriting.ai/docs/category/typewriting-ai-tutorial"
+                        : "https://www.youtube.com/channel/UCSLTKQLEd413fJ4kGvNWZ9g/"
                     }
                     target="_blank"
                     rel="noopener noreferrer"
@@ -143,7 +141,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { name: "Contact", href: "mailto:typewriting.ai@gmail.com" },
-                { name: "Discord Community", href: "https://discord.gg/typewriting" },
+                { name: "Discord Community", href: "https://discord.gg/tqbH6Svz8k" },
                 { name: "Twitter", href: "https://twitter.com/typewritingai" }
               ].map((item, index) => (
                 <motion.li
@@ -179,12 +177,12 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Typewriting.ai. All rights reserved.
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            {["Privacy Policy", "Terms of Service"].map((item, index) => (
+            {["Privacy Policy", "Terms and conditions"].map((item, index) => (
               <motion.a
                 key={item}
                 whileHover={{ y: -2 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-                href={item === "Privacy Policy" ? "https://typewriting.ai/privacy" : "https://typewriting.ai/terms"}
+                href={item === "Privacy Policy" ? "https://docs.google.com/document/d/1n6s0zkL7J-v9q9WhBLePNqWO-DltNV2MjT9wEGb4yQo" : "https://docs.google.com/document/d/14BH22j5pe32UdW15S9xnrVilNpfwU5UF8U-OUX5POxI"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-gray-500 hover:text-[#2382fc] transition-colors duration-200"

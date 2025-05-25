@@ -1,7 +1,7 @@
 import React from 'react';
 import Hero from '@/app/home/hero';
 import Features from '@/app/home/features';
-import Testimonials from '@/app/demo/Testimonials';
+// import Testimonials from '@/app/demo/Testimonials';
 // import Pricing from '@/app/demo/Pricing';
 import CTA from '@/app/home/cta';
 import FAQ from '@/app/home/faq';

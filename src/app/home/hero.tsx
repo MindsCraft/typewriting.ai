@@ -40,7 +40,7 @@ const Hero = () => {
               href="https://ask.typewriting.ai/login"
               className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-medium text-white bg-[#2382fc] rounded-xl hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
-              <span className="relative">Start Building Free</span>
+              <span className="relative">Start Free</span>
               <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
