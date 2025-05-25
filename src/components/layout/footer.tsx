@@ -141,7 +141,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { name: "Contact", href: "mailto:typewriting.ai@gmail.com" },
-                { name: "Discord Community", href: "https://discord.gg/tqbH6Svz8k" },
+                { name: "Discord", href: "https://discord.gg/tqbH6Svz8k" },
                 { name: "Twitter", href: "https://twitter.com/typewritingai" }
               ].map((item, index) => (
                 <motion.li
