@@ -7,7 +7,7 @@ import React from "react";
 
 const CTA = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 to-indigo-700 text-white py-32 my-20" id="cta">
+    <section className="relative overflow-hidden bg-[#2382fc] text-white py-32 my-20" id="cta">
     {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
         <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-white rounded-full filter blur-3xl"></div>

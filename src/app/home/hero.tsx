@@ -38,14 +38,14 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
               href="https://ask.typewriting.ai/login"
-              className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden font-medium text-white bg-[#2382fc] rounded-xl hover:bg-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               <span className="relative">Start Building Free</span>
               <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               href="https://calendly.com/uddinmoin/typewriting"
-              className="group inline-flex items-center justify-center px-8 py-4 font-medium text-gray-700 bg-white border-2 border-gray-200 rounded-xl hover:bg-gray-50 transition-all duration-300 hover:shadow-lg"
+              className="group inline-flex items-center justify-center px-8 py-4 font-medium text-[#2382fc] bg-white border-2 border-[#2382fc] rounded-xl hover:bg-blue-50 transition-all duration-300 hover:shadow-lg"
             >
               <span className="relative">Book A Call</span>
               <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
@@ -59,7 +59,7 @@ const Hero = () => {
           transition={{ delay: 0.2, duration: 0.6 }}
           className="mt-20 bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300"
         >
-          <div className="p-1 bg-gradient-to-r from-blue-500 to-indigo-600" />
+          <div className="p-1 bg-[#2382fc]" />
           <div className="p-6 md:p-8">
             <div className="flex flex-col md:flex-row justify-between items-center mb-4">
               <h3 className="text-2xl font-bold text-gray-900 mb-3 md:mb-0 text-left">

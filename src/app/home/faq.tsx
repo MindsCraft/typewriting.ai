@@ -134,7 +134,7 @@ const FAQ = () => {
           >
             <a
               href="https://calendly.com/uddinmoin/typewriting"
-              className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-lg font-medium rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-md hover:shadow-lg"
+              className="inline-flex items-center justify-center px-6 py-3 bg-[#2382fc] text-white text-lg font-medium rounded-xl hover:bg-blue-600 transition-all duration-300 shadow-md hover:shadow-lg"
             >
               Schedule a Call
               <FiCalendar className="ml-2" />
