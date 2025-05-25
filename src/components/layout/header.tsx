@@ -17,7 +17,7 @@ export default function Header() {
       }
 
       // Update active section based on scroll position
-      const sections = ['hero', 'features', 'testimonials', 'pricing', 'faq'];
+      const sections = ['hero', 'features', 'cta', 'faq'];
       for (const section of sections.reverse()) {
         const element = document.getElementById(section);
         if (element) {
@@ -47,9 +47,9 @@ export default function Header() {
 
   // Navigation items to keep DRY
   const navItems = [
+    { id: 'hero', label: 'Home' },
     { id: 'features', label: 'Features' },
-    { id: 'testimonials', label: 'Testimonials' },
-    { id: 'pricing', label: 'Pricing' },
+    { id: 'cta', label: 'Book A Call' },
     { id: 'faq', label: 'FAQ' }
   ];
 
@@ -93,7 +93,7 @@ export default function Header() {
                   onClick={() => scrollToSection(item.id)}
                   className={`px-3 py-2 text-sm rounded-md transition-all duration-200 cursor-pointer ${
                     activeItem === item.id 
-                      ? 'text-gray-900 bg-gray-100/70 shadow-sm' 
+                      ? 'text-gray-900 bg-gray-100/70' 
                       : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100/50'
                   }`}
                 >
