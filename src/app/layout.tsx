@@ -17,9 +17,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Typewriting.ai | Smart AI Writing Assistant",
-  description: "Experience the future of writing with Typewriting.ai, your intelligent assistant for polished, engaging content.",
-  keywords: ["AI writing", "writing assistant", "content creation", "AI", "copywriting", "editing tool"],
+  title: "Typewriting - Chatbot that replaces forms.",
+  description: "An intelligent feedback tool that listens, asks follow-up questions, identifies key information, and explains to help customers better understand your service or product.",
+  keywords: ["business communication, AI chatbot, email management, generative AI, inbox automation, smart replies, AI assistant, automated responses, chat-based AI, business AI tools, reduce email overload, AI customer support, smart business chat, enterprise AI, document-based AI replies"],
 };
 
 export default function RootLayout({

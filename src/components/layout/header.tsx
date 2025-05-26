@@ -1,14 +1,28 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowRight, FiCalendar } from 'react-icons/fi';
+
+type NavItem = {
+  id?: string;
+  href?: string;
+  label: string;
+  external?: boolean;
+};
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeItem, setActiveItem] = useState('features');
+
+  // Navigation items
+  const navItems: NavItem[] = [
+    { id: 'hero', label: 'Home' },
+    { id: 'features', label: 'Features' },
+    { id: 'cta', label: 'Book A Call' },
+    { id: 'faq', label: 'FAQ' }
+  ];
 
   // Handle scroll effect for navbar
   useEffect(() => {
@@ -20,7 +34,7 @@ export default function Header() {
 
       // Update active section based on scroll position
       const sections = ['hero', 'features', 'cta', 'faq'];
-      for (const section of sections.reverse()) {
+      for (const section of [...sections].reverse()) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
@@ -33,9 +47,7 @@ export default function Header() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [scrolled]);
 
   const scrollToSection = (sectionId: string) => {
@@ -43,41 +55,31 @@ export default function Header() {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      setActiveItem(sectionId);
     }
-    setActiveItem(sectionId);
   };
-
-  // Navigation items to keep DRY
-  const navItems = [
-    { id: 'hero', label: 'Home' },
-    { id: 'features', label: 'Features' },
-    { id: 'cta', label: 'Book A Call' },
-    { id: 'faq', label: 'FAQ' }
-  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
-      {/* Enhanced chromatic blur with frosted glass effect */}
+      {/* Background with blur effect */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
         className={`border-b border-gray-200/30 absolute inset-0 transition-all duration-500 ease-in-out backdrop-filter backdrop-blur-lg bg-gradient-to-r from-white/70 via-white/80 to-white/70 ${
-          scrolled 
-            ? 'bg-opacity-80' 
-            : 'bg-opacity-70' 
+          scrolled ? 'bg-opacity-80' : 'bg-opacity-70'
         }`}
         style={{
           backdropFilter: 'blur(12px) saturate(180%)',
           WebkitBackdropFilter: 'blur(12px) saturate(180%)'
         }}
       >
-        {/* Enhanced chromatic light effect */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-100/15 via-indigo-100/10 to-purple-100/15 opacity-40 mix-blend-overlay"></div>
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex items-center justify-between h-16 md:h-18">
+          {/* Logo */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -94,7 +96,7 @@ export default function Header() {
             </button>
           </motion.div>
 
-          {/* Navigation - Center - Enhanced */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center justify-center z-10 flex-1">
             <motion.nav
               initial={{ opacity: 0, y: -10 }}
@@ -102,34 +104,41 @@ export default function Header() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="flex space-x-2"
             >
-              {navItems.map((item, index) => (
-                <motion.button
-                  key={item.id}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
-                  whileHover={{ y: -2 }}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`px-4 py-2 text-base transition-all duration-200 cursor-pointer ${
-                    activeItem === item.id 
-                      ? 'text-gray-800 font-bold' 
-                      : 'text-gray-600 font-normal hover:text-gray-700'
-                  }`}
-                >
-                  {item.label}
-                </motion.button>
-              ))}
+              <ul className="flex space-x-2">
+                {navItems.map((item) => (
+                  <li key={item.href || item.id}>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100/50 rounded-md transition-colors duration-200"
+                      >
+                        {item.label}
+                      </a>
+                    ) : (
+                      <button
+                        onClick={() => item.id && scrollToSection(item.id)}
+                        className={`px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 ${
+                          activeItem === item.id
+                            ? 'text-[#2382fc] bg-blue-50/70'
+                            : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100/50'
+                        }`}
+                      >
+                        {item.label}
+                      </button>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </motion.nav>
           </div>
 
-          {/* CTA - Right - Enhanced */}
+          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex items-center justify-end flex-shrink-0 z-10"
+            className="flex items-center justify-end flex-shrink-0 z-10 space-x-4"
           >
-            {/* Book a call button - Enhanced */}
             <motion.div
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
@@ -147,7 +156,7 @@ export default function Header() {
               </a>
             </motion.div>
 
-            {/* Mobile menu button - Enhanced */}
+            {/* Mobile menu button */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -174,7 +183,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Enhanced Mobile menu with animations */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -189,27 +198,41 @@ export default function Header() {
               background: 'linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0.95), rgba(255,255,255,0.9))'
             }}
           >
-            {/* Enhanced chromatic light effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-blue-100/10 via-indigo-100/5 to-purple-100/10 opacity-30 mix-blend-overlay"></div>
-
             <div className="px-5 pt-4 pb-8 relative">
               <nav className="grid gap-y-3">
-                {navItems.map((item, index) => (
-                  <motion.button
-                    key={item.id}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: 0.05 * index }}
-                    className={`px-4 py-3 text-base transition-all cursor-pointer ${
-                      activeItem === item.id
-                        ? 'text-gray-800 font-bold'
-                        : 'text-gray-600 font-normal hover:text-gray-700'
-                    }`}
-                    onClick={() => scrollToSection(item.id)}
-                  >
-                    {item.label}
-                  </motion.button>
-                ))}
+                {navItems.map((item, index) =>
+                  item.id ? (
+                    <motion.button
+                      key={item.id}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: 0.05 * index }}
+                      className={`px-4 py-3 text-base transition-all cursor-pointer text-left ${
+                        activeItem === item.id
+                          ? 'text-gray-800 font-bold'
+                          : 'text-gray-600 font-normal hover:text-gray-700'
+                      }`}
+                      onClick={() => item.id && scrollToSection(item.id)}
+                    >
+                      {item.label}
+                    </motion.button>
+                  ) : (
+                    <motion.a
+                      key={item.href}
+                      href={item.href}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: 0.05 * index }}
+                      className="px-4 py-3 text-base text-gray-600 font-normal hover:text-gray-700 transition-all cursor-pointer block"
+                      target={item.external ? "_blank" : "_self"}
+                      rel={item.external ? "noopener noreferrer" : ""}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </motion.a>
+                  )
+                )}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -240,6 +263,7 @@ export default function Header() {
                     <a
                       href="https://ask.typewriting.ai/login"
                       className="w-full inline-flex items-center justify-center px-5 py-3 bg-white border border-[#2382fc] text-[#2382fc] text-base font-medium rounded-lg hover:bg-blue-50 hover:border-blue-500 transition-all duration-300 shadow-sm hover:shadow-md"
+                      onClick={() => setMobileMenuOpen(false)}
                     >
                       Start Free
                       <FiArrowRight className="ml-2" />
