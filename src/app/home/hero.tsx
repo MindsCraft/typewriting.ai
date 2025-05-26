@@ -4,6 +4,7 @@ import Link from "next/link";
 import {FiArrowRight} from "react-icons/fi";
 import React from "react";
 import { motion } from 'framer-motion';
+import ProductHuntBadge from '@/components/marketing/ProductHuntBadge';
 
 // Hero Section
 const Hero = () => {
@@ -18,18 +19,18 @@ const Hero = () => {
           className="text-center max-w-4xl mx-auto"
         >
           <div className="inline-flex items-center bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
-                  <span className="relative flex h-2 w-2 mr-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                  </span>
-            NoT another AI-Powered Chatbots Agent!!!
+            <span className="relative flex h-2 w-2 mr-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            </span>
+            Not another AI-Powered Chatbots Agent
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Build Your AI Assistants
+            Replace boring forms with
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                    Without Writing Code
-                  </span>
+              Conversational Agent
+            </span>
           </h1>
           <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
             A complete platform to make AI agents who acts like your secretary.<br/>
@@ -65,21 +66,9 @@ const Hero = () => {
               <h3 className="text-2xl font-bold text-gray-900 mb-3 md:mb-0 text-left">
                 See us in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Action</span>
               </h3>
-              <a
-                href="https://www.producthunt.com/posts/typewriting-helpdesk-agent?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-typewriting&#0045;helpdesk&#0045;agent"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transform hover:scale-105 transition-transform duration-300 rounded-lg"
-              >
-                <img
-                  src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=949292&theme=dark&t=1747735554674"
-                  alt="Typewriting&#0032;Helpdesk&#0032;Agent - Avoid&#0032;delays&#0032;or&#0032;ghosting—let&#0032;AI&#0032;respond&#0032;your&#0032;client | Product Hunt"
-                  style={{width: "250px", height: "54px"}}
-                  width="250"
-                  height="54"
-                  className="rounded-lg"
-                />
-              </a>
+              <div className="transform hover:scale-105 transition-transform duration-300">
+                <ProductHuntBadge />
+              </div>
             </div>
             <div className="relative overflow-hidden rounded-xl border border-gray-200 group">
               {/* Decorative elements */}
