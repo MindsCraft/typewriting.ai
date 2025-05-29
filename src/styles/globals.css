@@ -204,3 +204,99 @@ body {
   85%, 90% { width: 9ch; }
   95% { width: 10ch; }
 }
+
+/* Floating blob animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Grid background pattern */
+.bg-grid-slate-100 {
+  --grid-color: rgb(203 213 225);
+  --grid-size: 2.5rem;
+  
+  background-image: 
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: -1px -1px;
+  opacity: 0.15;
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.5) 70%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.5) 70%, transparent 100%);
+  
+  /* Subtle animation */
+  animation: grid-pulse 20s infinite alternate;
+}
+
+@keyframes grid-pulse {
+  0% { opacity: 0.1; }
+  100% { opacity: 0.2; }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Responsive video container */
+.aspect-video {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.aspect-video > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Blob background animations */
+@keyframes blob-float {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1);
+  }
+  25% { 
+    transform: translate(5%, 5%) scale(1.05);
+  }
+  50% { 
+    transform: translate(0, 10%) scale(0.95);
+  }
+  75% { 
+    transform: translate(-5%, 5%) scale(1.05);
+  }
+}
+
+/* Performance optimizations */
+.optimize-3d {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Blob filter effect */
+.blob-filter {
+  filter: blur(80px);
+  will-change: transform, opacity;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

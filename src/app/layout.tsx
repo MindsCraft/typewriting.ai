@@ -71,37 +71,9 @@ export const metadata: Metadata = {
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
   metadataBase: new URL(SITE_URL),
-
-  // Site information
-  applicationName: 'Typewriting.ai',
-  authors: [{
-    name: 'Typewriting.ai',
-    url: SITE_URL
-  }],
-  creator: 'Typewriting.ai',
-  publisher: 'Typewriting.ai',
-  generator: 'Next.js',
-
-  // SEO
-  keywords: [
-    'AI chatbot', 'business communication', 'customer support',
-    'automated responses', 'enterprise AI', 'chat automation',
-    'AI assistant', 'smart replies', 'business automation'
-  ],
-
-  // Icons and theme
-  icons: {
-    icon: [
-      { url: '/favicon.ico' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/apple-touch-icon.png' },
-    ],
+  alternates: {
+    canonical: SITE_URL,
   },
-
-  // Open Graph
   openGraph: {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
@@ -116,8 +88,6 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
   },
-
-  // Twitter
   twitter: {
     card: 'summary_large_image',
     title: SITE_TITLE,
@@ -131,16 +101,6 @@ export const metadata: Metadata = {
       alt: SITE_TITLE,
     }],
   },
-
-  // SEO
-  alternates: {
-    canonical: SITE_URL,
-    languages: {
-      'en-US': '/en-US',
-    },
-  },
-
-  // Robots
   robots: {
     index: true,
     follow: true,
@@ -152,13 +112,23 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-
-  // Additional
-  category: 'business',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png' },
+    ],
+  },
+  manifest: '/site.webmanifest',
+  themeColor: '#2382fc',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
   },
 };
 
