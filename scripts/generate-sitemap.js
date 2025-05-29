@@ -1,6 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
+// Get base URL from environment or use default
+const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://typewriting.ai').replace(/\/$/, '');
+
 // Define the pages in your site
 const pages = [
   {
@@ -25,7 +28,7 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     .map(
       (page) => `
     <url>
-      <loc>${process.env.NEXT_PUBLIC_SITE_URL}${page.url}</loc>
+      <loc>${baseUrl}${page.url}</loc>
       <lastmod>${page.lastModified.toISOString()}</lastmod>
       <changefreq>${page.changeFrequency}</changefreq>
       <priority>${page.priority}</priority>

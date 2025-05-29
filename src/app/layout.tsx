@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
@@ -15,15 +15,18 @@ const SITE_URL = 'https://typewriting.ai';
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-VVR0XTQPJD';
 
 // Fonts
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
+  weight: ['400', '500', '600', '700'],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
+  display: "swap",
+  weight: ['400', '500', '600', '700'],
 });
 
 // Viewport settings
@@ -68,37 +71,9 @@ export const metadata: Metadata = {
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
   metadataBase: new URL(SITE_URL),
-
-  // Site information
-  applicationName: 'Typewriting.ai',
-  authors: [{
-    name: 'Typewriting.ai',
-    url: SITE_URL
-  }],
-  creator: 'Typewriting.ai',
-  publisher: 'Typewriting.ai',
-  generator: 'Next.js',
-
-  // SEO
-  keywords: [
-    'AI chatbot', 'business communication', 'customer support',
-    'automated responses', 'enterprise AI', 'chat automation',
-    'AI assistant', 'smart replies', 'business automation'
-  ],
-
-  // Icons and theme
-  icons: {
-    icon: [
-      { url: '/favicon.ico' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/apple-touch-icon.png' },
-    ],
+  alternates: {
+    canonical: SITE_URL,
   },
-
-  // Open Graph
   openGraph: {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
@@ -113,8 +88,6 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
   },
-
-  // Twitter
   twitter: {
     card: 'summary_large_image',
     title: SITE_TITLE,
@@ -128,16 +101,6 @@ export const metadata: Metadata = {
       alt: SITE_TITLE,
     }],
   },
-
-  // SEO
-  alternates: {
-    canonical: SITE_URL,
-    languages: {
-      'en-US': '/en-US',
-    },
-  },
-
-  // Robots
   robots: {
     index: true,
     follow: true,
@@ -149,13 +112,23 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-
-  // Additional
-  category: 'business',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png' },
+    ],
+  },
+  manifest: '/site.webmanifest',
+  themeColor: '#2382fc',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
   },
 };
 
@@ -165,7 +138,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full scroll-smooth">
+    <html 
+      lang="en" 
+      className={`font-sans ${inter.variable} ${jetbrainsMono.variable} h-full scroll-smooth`}
+      style={{
+        '--font-sans': 'Inter, system-ui, -apple-system, sans-serif',
+        '--font-mono': 'JetBrains Mono, monospace'
+      } as React.CSSProperties}
+    >
       <head>
         {/* Google Analytics - Client Component */}
         <GoogleAnalytics />
@@ -188,7 +168,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#2382fc" />
       </head>
 
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased text-gray-900 bg-white`}>
+      <body className="font-sans antialiased">
         <Providers>
           <Header />
           <main id="main-content" className="min-h-screen pt-16">

@@ -68,18 +68,18 @@ export default function Header() {
             : 'bg-opacity-70' 
         }`}
         style={{
-          backdropFilter: 'blur(12px) saturate(180%)',
-          WebkitBackdropFilter: 'blur(12px) saturate(180%)'
+          backdropFilter: 'blur(0.75rem) saturate(180%)',
+          WebkitBackdropFilter: 'blur(0.75rem) saturate(180%)'
         }}
       >
         {/* Enhanced chromatic light effect */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-100/15 via-indigo-100/10 to-purple-100/15 opacity-40 mix-blend-overlay"></div>
       </motion.div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="flex items-center justify-between h-16 md:h-18">
+      <div className="max-w-[80rem] mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="flex items-center justify-between h-16">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -1.25 }} // 20px converted to rem
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             className="flex-shrink-0 z-10"
@@ -94,37 +94,41 @@ export default function Header() {
             </button>
           </motion.div>
 
-          {/* Navigation - Center - Enhanced */}
+          {/* Navigation - Center - Notion-style */}
           <div className="hidden md:flex items-center justify-center z-10 flex-1">
             <motion.nav
-              initial={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, y: -0.625 }} // 10px converted to rem
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="flex space-x-2"
+              className="flex items-center space-x-1 bg-gray-100/50 rounded-full px-1.5 py-1.5"
             >
               {navItems.map((item, index) => (
-                <motion.button
+                <motion.div 
                   key={item.id}
-                  initial={{ opacity: 0, y: -10 }}
+                  className="relative"
+                  initial={{ opacity: 0, y: -0.625 }} // 10px converted to rem
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.1 + index * 0.05 }}
-                  whileHover={{ y: -2 }}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`px-4 py-2 text-base transition-all duration-200 cursor-pointer ${
-                    activeItem === item.id 
-                      ? 'text-gray-800 font-bold' 
-                      : 'text-gray-600 font-normal hover:text-gray-700'
-                  }`}
                 >
-                  {item.label}
-                </motion.button>
+                  <button
+                    onClick={() => scrollToSection(item.id)}
+                    className={`relative px-2.5 py-0.375 text-[0.875rem] leading-[1.25rem] font-medium rounded-full transition-all duration-200 ${
+                      activeItem === item.id 
+                        ? 'text-gray-900 bg-white' 
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200/50'
+                    }`}
+                    style={{ paddingTop: '0.375rem', paddingBottom: '0.375rem' }}
+                  >
+                    {item.label}
+                  </button>
+                </motion.div>
               ))}
             </motion.nav>
           </div>
 
           {/* CTA - Right - Enhanced */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 1.25 }} // 20px converted to rem
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             className="flex items-center justify-end flex-shrink-0 z-10"
@@ -140,7 +144,7 @@ export default function Header() {
                 href="https://calendly.com/uddinmoin/typewriting"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-5 py-2.5 bg-[#2382fc] text-white text-sm font-medium rounded-lg hover:bg-blue-600 transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer"
+                className="inline-flex items-center justify-center px-5 py-2.5 bg-[#2382fc] text-white text-[0.875rem] leading-[1.25rem] font-medium rounded-lg hover:bg-blue-600 transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer"
               >
                 Book a Call
                 <FiCalendar className="ml-2" />
@@ -174,51 +178,66 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Enhanced Mobile menu with animations */}
+      {/* Full-screen Mobile menu with enhanced animations */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: '100%' }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden absolute top-full left-0 right-0 z-40 border-b border-gray-200/30 shadow-md"
-            style={{
-              backdropFilter: 'blur(12px) saturate(180%)',
-              WebkitBackdropFilter: 'blur(12px) saturate(180%)',
-              background: 'linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0.95), rgba(255,255,255,0.9))'
-            }}
+            exit={{ opacity: 0, y: '100%' }}
+            transition={{ type: 'spring', damping: 30, stiffness: 400 }}
+            className="md:hidden fixed inset-0 z-50 bg-white"
           >
-            {/* Enhanced chromatic light effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-100/10 via-indigo-100/5 to-purple-100/10 opacity-30 mix-blend-overlay"></div>
+            {/* Close button */}
+            <div className="absolute top-4 right-4 z-50">
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 rounded-full text-gray-500 hover:bg-gray-100 focus:outline-none"
+                aria-label="Close menu"
+              >
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
 
-            <div className="px-5 pt-4 pb-8 relative">
-              <nav className="grid gap-y-3">
-                {navItems.map((item, index) => (
-                  <motion.button
-                    key={item.id}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: 0.05 * index }}
-                    className={`px-4 py-3 text-base transition-all cursor-pointer ${
-                      activeItem === item.id
-                        ? 'text-gray-800 font-bold'
-                        : 'text-gray-600 font-normal hover:text-gray-700'
-                    }`}
-                    onClick={() => scrollToSection(item.id)}
-                  >
-                    {item.label}
-                  </motion.button>
-                ))}
+            <div className="h-full flex flex-col justify-center px-6 py-16 overflow-y-auto">
+              <nav className="space-y-6">
+                <div className="space-y-1">
+                  {navItems.map((item, index) => (
+                    <motion.div 
+                      key={item.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ 
+                        duration: 0.4, 
+                        delay: 0.05 * index,
+                        ease: [0.4, 0, 0.2, 1]
+                      }}
+                    >
+                      <button
+                        onClick={() => scrollToSection(item.id)}
+                        className={`w-full text-left px-6 py-4 text-xl font-medium rounded-xl transition-colors ${
+                          activeItem === item.id
+                            ? 'bg-blue-50 text-blue-600'
+                            : 'text-gray-900 hover:bg-gray-50'
+                        }`}
+                      >
+                        {item.label}
+                      </button>
+                    </motion.div>
+                  ))}
+                </div>
+
                 <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3, delay: 0.25 }}
-                  className="pt-5 mt-3 space-y-4 border-t border-gray-200/50"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                  className="pt-6 mt-6 space-y-4 border-t border-gray-100"
                 >
                   <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 10 }}
                   >
                     <a
@@ -226,23 +245,23 @@ export default function Header() {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setMobileMenuOpen(false)}
-                      className="w-full inline-flex items-center justify-center px-5 py-3 bg-[#2382fc] text-white text-base font-medium rounded-lg hover:bg-blue-600 transition-all duration-300 shadow-md hover:shadow-lg"
+                      className="w-full inline-flex items-center justify-center px-6 py-4 bg-blue-600 text-white text-lg font-medium rounded-xl hover:bg-blue-700 transition-colors"
                     >
                       Book a Call
-                      <FiCalendar className="ml-2" />
+                      <FiCalendar className="ml-2.5" />
                     </a>
                   </motion.div>
                   <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 10 }}
                   >
                     <a
                       href="https://ask.typewriting.ai/login"
-                      className="w-full inline-flex items-center justify-center px-5 py-3 bg-white border border-[#2382fc] text-[#2382fc] text-base font-medium rounded-lg hover:bg-blue-50 hover:border-blue-500 transition-all duration-300 shadow-sm hover:shadow-md"
+                      className="w-full inline-flex items-center justify-center px-6 py-4 bg-white border-2 border-blue-600 text-blue-600 text-lg font-medium rounded-xl hover:bg-blue-50 transition-colors"
                     >
                       Start Free
-                      <FiArrowRight className="ml-2" />
+                      <FiArrowRight className="ml-2.5" />
                     </a>
                   </motion.div>
                 </motion.div>
