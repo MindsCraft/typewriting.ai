@@ -11,6 +11,11 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://ask.typewriting.ai/login</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
         <loc>https://app003.typewriting.ai</loc>
         <changefreq>weekly</changefreq>
         <priority>0.5</priority>
