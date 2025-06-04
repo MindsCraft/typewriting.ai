@@ -125,7 +125,7 @@ const ExperimentsPage = () => {
                 href="https://calendly.com/uddinmoin/typewriting"
                 className="group inline-flex items-center justify-center px-8 py-4 font-medium text-gray-700 bg-white border-2 border-gray-200 rounded-xl hover:bg-gray-50 transition-all duration-300 hover:shadow-lg"
               >
-                <span className="relative">Book A Call</span>
+                <span className="relative">Request a Demo</span>
                 <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
@@ -411,7 +411,7 @@ const ExperimentsPage = () => {
                   href="https://calendly.com/uddinmoin/typewriting"
                   className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white/50 text-white text-lg font-semibold rounded-xl hover:bg-white/10 transition-all duration-300"
                 >
-                  Schedule a Call
+                  Request a Demo
                   <FiCalendar className="ml-2" />
                 </Link>
               </motion.div>

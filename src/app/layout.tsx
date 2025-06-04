@@ -38,6 +38,7 @@ export const viewport: Viewport = {
   themeColor: '#2382fc',
 };
 
+
 // JSON-LD structured data
 const jsonLd = {
   "@context": "https://schema.org",
@@ -123,13 +124,7 @@ export const metadata: Metadata = {
     ],
   },
   manifest: '/site.webmanifest',
-  themeColor: '#2382fc',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-  },
+
 };
 
 export default function RootLayout({
