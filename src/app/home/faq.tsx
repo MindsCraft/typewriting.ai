@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiCalendar } from 'react-icons/fi';
+import { FiMail } from 'react-icons/fi';
 
 const FAQ = () => {
   const [openItem, setOpenItem] = useState<number | null>(0);
@@ -133,11 +133,11 @@ const FAQ = () => {
             transition={{ type: 'spring', stiffness: 400, damping: 10 }}
           >
             <a
-              href="https://calendly.com/uddinmoin/typewriting"
+              href="mailto:typewriting.ai@gmail.com"
               className="inline-flex items-center justify-center px-6 py-3 bg-[#2382fc] text-white text-lg font-medium rounded-xl hover:bg-blue-600 transition-all duration-300 shadow-md hover:shadow-lg"
             >
-              Schedule a Call
-              <FiCalendar className="ml-2" />
+              Contact Us
+              <FiMail className="ml-2" />
             </a>
           </motion.div>
         </motion.div>

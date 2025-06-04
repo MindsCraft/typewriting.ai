@@ -52,7 +52,7 @@ const Hero = () => {
             </span>
           </h1>
           <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-          A complete platform to make AI agents who act like your secretary. Ask follow up questions, Taking automated notes, getting you prepared.
+          A complete platform to make AI agents who act like your secretary. Ask follow up questions, Taking automated notes, Getting you prepared.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
@@ -66,7 +66,7 @@ const Hero = () => {
               href="https://calendly.com/uddinmoin/typewriting"
               className="group inline-flex items-center justify-center px-8 py-4 font-medium text-[#2382fc] bg-white border-2 border-[#2382fc] rounded-xl hover:bg-blue-50 transition-all duration-300 hover:shadow-lg"
             >
-              <span className="relative">Book A Call</span>
+              <span className="relative">Request a Demo</span>
               <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
@@ -90,8 +90,7 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 z-10 pointer-events-none"></div>
                 {/* Video element */}
                 <video
-                  className="w-full h-full object-cover transition-all duration-700 group-hover/video:scale-105"
-                  poster="/video-poster.jpg"
+                  className="w-full h-full object-cover transition-all duration-700 group-hover/video:scale-105 bg-gradient-to-br from-blue-50 to-indigo-50"
                   controls
                   autoPlay
                   muted

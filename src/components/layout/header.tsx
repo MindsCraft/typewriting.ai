@@ -5,6 +5,11 @@ import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowRight, FiCalendar } from 'react-icons/fi';
 
+/**
+ * Header component renders a responsive navigation bar with enhanced animations and effects.
+ * It includes navigation links, a call-to-action button, and a mobile menu.
+ * The component handles scroll events to update the active navigation item and adjusts the header's appearance.
+ */
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -51,7 +56,7 @@ export default function Header() {
   const navItems = [
     { id: 'hero', label: 'Home' },
     { id: 'features', label: 'Features' },
-    { id: 'cta', label: 'Book A Call' },
+    { id: 'cta', label: 'Request a Demo' },
     { id: 'faq', label: 'FAQ' }
   ];
 
@@ -112,7 +117,7 @@ export default function Header() {
                 >
                   <button
                     onClick={() => scrollToSection(item.id)}
-                    className={`relative px-2.5 py-0.375 text-[0.875rem] leading-[1.25rem] font-medium rounded-full transition-all duration-200 ${
+                    className={`relative px-2.5 py-0.375 text-[0.875rem] leading-[1.25rem] font-medium rounded-full transition-all duration-200 cursor-pointer ${
                       activeItem === item.id 
                         ? 'text-gray-900 bg-white' 
                         : 'text-gray-600 hover:text-gray-900 hover:bg-gray-200/50'
@@ -133,7 +138,7 @@ export default function Header() {
             transition={{ duration: 0.5 }}
             className="flex items-center justify-end flex-shrink-0 z-10"
           >
-            {/* Book a call button - Enhanced */}
+            {/* Request a demo button - Enhanced */}
             <motion.div
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
@@ -141,13 +146,11 @@ export default function Header() {
               className="hidden md:block"
             >
               <a
-                href="https://calendly.com/uddinmoin/typewriting"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="https://ask.typewriting.ai/login"
                 className="inline-flex items-center justify-center px-5 py-2.5 bg-[#2382fc] text-white text-[0.875rem] leading-[1.25rem] font-medium rounded-lg hover:bg-blue-600 transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer"
               >
-                Book a Call
-                <FiCalendar className="ml-2" />
+                Start Free
+                <FiArrowRight className="ml-2" />
               </a>
             </motion.div>
 
@@ -217,7 +220,7 @@ export default function Header() {
                     >
                       <button
                         onClick={() => scrollToSection(item.id)}
-                        className={`w-full text-left px-6 py-4 text-xl font-medium rounded-xl transition-colors ${
+                        className={`w-full text-left px-6 py-4 text-xl font-medium rounded-xl transition-colors cursor-pointer ${
                           activeItem === item.id
                             ? 'bg-blue-50 text-blue-600'
                             : 'text-gray-900 hover:bg-gray-50'
@@ -247,7 +250,7 @@ export default function Header() {
                       onClick={() => setMobileMenuOpen(false)}
                       className="w-full inline-flex items-center justify-center px-6 py-4 bg-blue-600 text-white text-lg font-medium rounded-xl hover:bg-blue-700 transition-colors"
                     >
-                      Book a Call
+                      Request a Demo
                       <FiCalendar className="ml-2.5" />
                     </a>
                   </motion.div>

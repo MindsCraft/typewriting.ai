@@ -1,11 +1,5 @@
-# *
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
-Disallow: /features/*
-Disallow: /experiments/*
 
-# Host
-Host: https://typewriting.ai
-
-# Sitemaps
 Sitemap: https://typewriting.ai/sitemap.xml

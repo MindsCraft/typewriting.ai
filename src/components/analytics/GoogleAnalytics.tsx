@@ -51,12 +51,6 @@ export default function GoogleAnalytics() {
                 update: true,
                 anonymize_ip: true
               });
-              
-              console.log('Google Analytics initialized', { 
-                measurementId: '${GA_MEASUREMENT_ID}',
-                isLocalhost,
-                isDev
-              });
             }
             
             // Add error handler for gtag calls
