@@ -59,7 +59,7 @@ const Hero = () => {
               rel="noopener noreferrer"
               className="tpr-btn tpr-btn-secondary"
             >
-              Book a Call
+              Request a Demo
             </a>
           </div>
           <div className="mt-12">

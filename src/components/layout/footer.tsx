@@ -1,25 +1,17 @@
 "use client";
 
-import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { FaYoutube, FaGithub, FaDiscord, FaBook } from 'react-icons/fa';
+import { FaYoutube, FaDiscord, FaBook } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
 
 export default function Footer() {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <footer className="w-full border-t border-gray-200 py-20 mt-auto bg-white relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white opacity-50 pointer-events-none"></div>
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-5 pointer-events-none">
-        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-blue-300 rounded-full filter blur-3xl"></div>
-        <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-indigo-300 rounded-full filter blur-3xl"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white/50 pointer-events-none"></div>
+      <div className="absolute inset-0 overflow-hidden opacity-5 pointer-events-none">
+        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-blue-300 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-indigo-300 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,11 +39,9 @@ export default function Footer() {
               </div>
             </motion.div>
             <p className="text-sm text-gray-600 max-w-xs leading-relaxed">
-              Your intelligent AI assistant for building powerful conversational agents. Create smart AI assistants that ask questions, gather information, and explain complex topics clearly.
+              Your intelligent AI assistant for building powerful conversational agents. Create smart AI assistants that ask questions, gather information, and explain about your service or product clearly.
             </p>
-            <div className="flex gap-4">
-              {/* Social icons removed as per request */}
-            </div>
+            <div className="h-4" />
           </motion.div>
 
           <motion.div
@@ -59,9 +49,9 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:text-right"
+            className="text-left md:text-right"
           >
-            <h3 className="text-base font-medium mb-4 md:font-semibold text-gray-900">Resources</h3>
+            <h3 className="text-base font-medium mb-4 font-semibold text-gray-900">Resources</h3>
             <ul className="space-y-3">
               {[
                 {
@@ -81,7 +71,7 @@ export default function Footer() {
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.3 + (index * 0.1) }}
+                  transition={{ duration: 0.3, delay: 0.2 + (index * 0.05) }}
                   whileHover={{ x: -5, scale: 1.02 }}
                 >
                   <a
@@ -90,7 +80,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className="text-sm text-gray-600 hover:text-[#2382fc] transition-colors duration-200 group"
                   >
-                    <div className="flex items-center justify-end gap-2">
+                    <div className="flex items-center justify-start md:justify-end gap-2">
                       <span>{item.name}</span>
                       {item.icon}
                     </div>
@@ -105,9 +95,9 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="md:text-right"
+            className="text-left md:text-right"
           >
-            <h3 className="text-base font-medium mb-4 md:font-semibold text-gray-900">Connect</h3>
+            <h3 className="text-base font-medium mb-4 font-semibold text-gray-900 ">Connect</h3>
             <ul className="space-y-3">
               {[
                 {
@@ -126,7 +116,7 @@ export default function Footer() {
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.4 + (index * 0.1) }}
+                  transition={{ duration: 0.3, delay: 0.25 + (index * 0.05) }}
                   whileHover={{ x: -5, scale: 1.02 }}
                 >
                   <a
@@ -135,7 +125,7 @@ export default function Footer() {
                     rel={item.name !== "Contact" ? "noopener noreferrer" : undefined}
                     className="text-sm text-gray-600 hover:text-[#2382fc] transition-colors duration-200 group"
                   >
-                    <div className="flex items-center justify-end gap-2">
+                    <div className="flex items-center justify-start md:justify-end gap-2">
                       <span>{item.name}</span>
                       {item.icon}
                     </div>
@@ -150,7 +140,7 @@ export default function Footer() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="border-t border-gray-200 mt-14 pt-8 flex flex-col md:flex-row justify-between items-center"
         >
           <p className="text-sm text-gray-500">
@@ -160,7 +150,7 @@ export default function Footer() {
             {["Privacy Policy", "Terms and conditions"].map((item, index) => (
               <motion.a
                 key={item}
-                whileHover={{ y: -2 }}
+                whileHover={{ y: -1 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 10 }}
                 href={item === "Privacy Policy" ? "https://docs.google.com/document/d/1n6s0zkL7J-v9q9WhBLePNqWO-DltNV2MjT9wEGb4yQo" : "https://docs.google.com/document/d/14BH22j5pe32UdW15S9xnrVilNpfwU5UF8U-OUX5POxI"}
                 target="_blank"
@@ -172,7 +162,23 @@ export default function Footer() {
             ))}
           </div>
         </motion.div>
+        
+        {/* Developer Credit */}
+        <div className="mt-12 text-center pt-6 border-t border-gray-100">
+          <p className="text-xs text-gray-500">
+            Designed & Development partner {' '}
+            <a 
+              href="https://www.mindscraft.dev/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="font-medium text-[#2382fc] transition-colors duration-200 hover:text-blue-600"
+            >
+              MindsCraft
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
 }
+

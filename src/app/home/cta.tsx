@@ -54,7 +54,7 @@ const CTA = () => {
                 href="https://calendly.com/uddinmoin/typewriting"
                 className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-white/50 text-white text-lg font-semibold rounded-xl hover:bg-white/10 transition-all duration-300"
               >
-                Schedule a Call
+                Request a Demo
                 <FiCalendar className="ml-2" />
               </Link>
             </motion.div>
@@ -121,7 +121,7 @@ const CTA = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span className="text-white text-sm font-medium">Always Free for Limited Assistant</span>
+              <span className="text-white text-sm font-medium">Always free for limited assistant</span>
             </div>
 
             <div className="flex items-center px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm">

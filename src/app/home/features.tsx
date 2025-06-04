@@ -74,7 +74,7 @@ const features = [
           </h2>
           <p className="text-xl text-gray-600">
             Build smart AI assistants with our easy-to-use platform.
-            Your AI will ask questions, gather information, and explain complex topics clearly. No need human assistance.
+            Your AI will ask questions, gather information, and explain about your service or product clearly. No need human assistance.
           </p>
         </motion.div>
 
